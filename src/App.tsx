@@ -4,8 +4,8 @@ import Circle from './Circle';
 function App() {
   return (
     <>
-      <Circle bgColor="teal"/>
-      <Circle bgColor="tomato"/>
+      <Circle borderColor="red" bgColor="teal"/>
+      <Circle text='text' bgColor="tomato"/>
     </>
   );
 }

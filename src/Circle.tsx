@@ -4,18 +4,28 @@ import styled from "styled-components";
 // 이렇게 타입을 설정하는 방법 대신, 아래의 interface로 사용할 수 있다.
 interface CircleProps {
     bgColor:string;
+    borderColor?:string;
+    text?:string;
 }
 
-// Container 에도 따로 ContainerProps를 만들어줘야 하지만, CircleProps와 내용이 같기 때문에 여기서는 하나로 사용하였음.
-const Container = styled.div<CircleProps>`
+interface ContainerProps {
+    bgColor:string;
+    borderColor:string;
+}
+// Container 에도 따로 ContainerProps를 만들어줘야 하지만, CircleProps와 내용이 같기 때문에 하나로 사용할 수 있다.
+const Container = styled.div<ContainerProps>`
     width: 200px;
     height: 200px;
     background-color: ${props => props.bgColor};
     border-radius: 50%;
+    border: 1px solid ${props => props.borderColor};
 `;
 
-function Circle({bgColor}: CircleProps) {
-    return <Container bgColor={bgColor}/>;
+// borderColor ?? bgColor 뜻 => borderColor가 아무것도 없으면 (undefined)면 ,bgColor값을 가진다. 
+function Circle({bgColor, borderColor,text = "if text is not exist : default text"}: CircleProps) {
+    return  <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
+                {text}
+            </Container>;
 }
 
 export default Circle;
