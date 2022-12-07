@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 // const x = (a:number, b:number) => a + b 
@@ -23,6 +24,7 @@ const Container = styled.div<ContainerProps>`
 
 // borderColor ?? bgColor 뜻 => borderColor가 아무것도 없으면 (undefined)면 ,bgColor값을 가진다. 
 function Circle({bgColor, borderColor,text = "if text is not exist : default text"}: CircleProps) {
+    const [vaule, setValue] = useState("");
     return  <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
                 {text}
             </Container>;
