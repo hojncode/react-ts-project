@@ -1,24 +1,81 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import Router from "./Router";
 
-const Container = styled.div`
-  background-color : ${props => props.theme.bgColor};
-`
-const H1 = styled.h1`
-  color : ${props => props.theme.textColor};
-`
+
 
 
 function App() {
-    
-    return (
-      <>
-      <Container>
-        <H1>protected by TS</H1>
-      </Container>
-      </>
-    )
+  return <Router/>;
+}
 
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//=========================================================================//
+// const Container = styled.div`
+//   background-color : ${props => props.theme.bgColor};
+// `
+// const H1 = styled.h1`
+//   color : ${props => props.theme.textColor};
+// `
+
+// interface DummyProps {
+//   text?: string;
+//   active?: boolean;
+//   otherThingHere?: boolean;
+//   theme?:boolean;
+//   lightTheme?:string;
+//   darkTheme?:string;
+//   value?:boolean
+// }
+
+// function Dummy ({text, active,otherThingHere}: DummyProps) {
+//   return <H1>{text}</H1>
+// }
+
+
+// function App({theme}:DummyProps) {
+//   const [value, setValue] = useState("");
+//   const onClick = (event:React.FormEvent<HTMLButtonElement>) => {
+//     event.preventDefault();
+//     if (theme === true) {
+//       return setValue("1")
+//     } else setValue("2");
+    
+//     console.log(value)
+//   }
+     
+//     return (
+//       <>
+//       <Container>
+//         <H1>protected by TS</H1>
+//         <Dummy active={true} text="hello"></Dummy>
+//         <form>
+//           <button value={value} onClick={onClick}>Click this</button>
+//         </form>
+//       </Container>
+//       </>
+//     )
+// }
+// export default App;
 
 
 
@@ -54,6 +111,5 @@ function App() {
   //   </form>
   //   </>
   // );
-}
 
-export default App;
+
