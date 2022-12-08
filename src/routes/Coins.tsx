@@ -74,7 +74,7 @@ function Coins() {
             const json = await response.json();
             setCoins(json.slice(0,100));
             // 내가 추가한 코드 setTimeout
-            setTimeout(() => {setLoading(false);}, 1000);
+            setTimeout(() => {setLoading(false);}, 0);
         })();
     },[]);
     return (
