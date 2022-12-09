@@ -12,7 +12,9 @@ const Header = styled.header`
     justify-content:center;
     align-items:center;
 `
+//TODO:
 
+//FIXME:
 const CoinsList = styled.ul`
     
 `
