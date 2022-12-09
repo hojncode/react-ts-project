@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Chart from "./Chart";
 import Price from "./Price";
 
+// styled
 const Container = styled.div`
   padding: 0px 20px;
 `;
@@ -151,20 +152,16 @@ function Coin() {
   const { state } = useLocation<RouteState>();
   const [info, setInfo] = useState<IInfoData>();
   const [priceInfo, setPriceInfo] = useState<IPriceData>();
-  // console.log(state.name)
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
- console.log(priceMatch)
   useEffect(() => {
     (async () => {
       const infoData = await (
         await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
       ).json();
-    //   console.log(infoData);
       const priceData = await (
         await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
       ).json();
-    //   console.log(priceData);
       setInfo(infoData);
       setPriceInfo(priceData);
       setLoading(false);

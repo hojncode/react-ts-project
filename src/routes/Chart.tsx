@@ -7,8 +7,8 @@ const Title = styled.div<{isActive:boolean}>`
 
 function Chart() {
     const textColor = useRouteMatch("/:coinId/chart");
-    console.log(textColor);
+    // console.log(textColor);
     return <Title isActive={textColor !== null }>Chart</Title>;
-  }
-  
-  export default Chart;
+    }
+    
+export default Chart;
