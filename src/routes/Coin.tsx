@@ -85,6 +85,14 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
+const Button = styled(Link)`
+  position: absolute;
+  left: 0;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+`;
 
 interface RouteParams {
   coinId: string;
@@ -204,6 +212,7 @@ function Coin() {
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
+        <Button to="/">back</Button>
       </Header>
       {loading ? (
         <Loader>"Loading..."</Loader>
