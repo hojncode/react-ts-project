@@ -22,8 +22,8 @@ const Header = styled.header`
 //FIXME:
 const CoinsList = styled.ul``;
 const Coin = styled.div`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
   margin-bottom: 10px;
   border-radius: 15px;
   a {
@@ -67,7 +67,11 @@ interface ICoin {
   type: string;
 }
 
-function Coins() {
+interface ICoinsProps {
+  toggleDark: () => void;
+}
+
+function Coins({ toggleDark }: ICoinsProps) {
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
   console.log(isLoading, data);
   // const [coins, setCoins] = useState<ICoin[]>([]);
@@ -88,6 +92,7 @@ function Coins() {
       </Helmet> */}
       <Header>
         <Title>코인</Title>
+        <button onClick={toggleDark}>Toggle Dark Mode</button>
       </Header>
       {isLoading ? (
         <Loader>"Loading..."</Loader>

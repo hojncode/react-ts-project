@@ -80,9 +80,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         {/* The rest of your application */}
         <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-          <button onClick={toggleDark}>Toggle Mode</button>
           <GlobalStyle />
-          <Router />
+          <Router isDark={isDark} toggleDark={toggleDark} />
           <ReactQueryDevtools initialIsOpen={true} />
         </ThemeProvider>
       </QueryClientProvider>
