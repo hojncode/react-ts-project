@@ -52,6 +52,7 @@ function ToDoList() {
     // console.log(data);
   };
   console.log(errors);
+
   return (
     <div>
       {/* { required: true } 를 사용하는 이유는 , 자바스크립트에서 동작하게 하기 위함(html 에서 required가 동작하면 브라우저 이외의 환경에서 사용시 required가 작동 안함 == required는  HTML Input태그의 속성이기때문) */}
@@ -110,6 +111,7 @@ function ToDoList() {
           placeholder="Password1"
         />
         <span>{errors?.passWord1?.message}</span>
+
         <button>Add</button>
       </form>
     </div>
