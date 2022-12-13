@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RecoilRoot } from "recoil";
-import { darkTheme } from "./theme";
 
 const queryClient = new QueryClient();
 
@@ -12,9 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={darkTheme}>
-          <App />
-        </ThemeProvider>
+        <App />
       </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,
