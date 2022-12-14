@@ -9,7 +9,7 @@ function ToDoList() {
   // const modFn = useSetRecoilState(toDoState);
   // 위 두줄을 아래 한줄로 합쳐서 사용할 수 있다.
   const toDos = useRecoilValue(toDoState);
-
+  // console.log(toDos);
   return (
     <div>
       <h1>To Dos</h1>
@@ -18,7 +18,7 @@ function ToDoList() {
       <ul>
         {toDos.map((toDo) => (
           //{...toDo} 는 다음과 같다. text={toDo.text} category={toDo.category} id={toDo.id}
-          <ToDo {...toDo} />
+          <ToDo key={toDo.id} {...toDo} />
         ))}
       </ul>
     </div>
