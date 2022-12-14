@@ -29,13 +29,14 @@ import { DefaultValue } from "recoil";
 //     </div>
 //   );
 // }
-interface IError {
+interface IForm {
   email: string;
   firstName: string;
   lastName: string;
   userName: string;
   passWord: string;
   passWord1: string;
+  extraError?: string;
 }
 
 function ToDoList() {
@@ -43,13 +44,22 @@ function ToDoList() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IError>({
+    setError,
+  } = useForm<IForm>({
     defaultValues: {
       email: "@naver.com",
     },
   });
-  const onValid = (data: any) => {
+  const onValid = (data: IForm) => {
     // console.log(data);
+    if (data.passWord !== data.passWord1) {
+      setError(
+        "passWord1",
+        { message: "Password need to same" },
+        { shouldFocus: true }
+      );
+    }
+    setError("extraError", { message: "Server error" });
   };
   console.log(errors);
 
@@ -57,7 +67,7 @@ function ToDoList() {
     <div>
       {/* { required: true } 를 사용하는 이유는 , 자바스크립트에서 동작하게 하기 위함(html 에서 required가 동작하면 브라우저 이외의 환경에서 사용시 required가 작동 안함 == required는  HTML Input태그의 속성이기때문) */}
       <form
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: "flex", flexDirection: "column", color: "white" }}
         onSubmit={handleSubmit(onValid)}
       >
         <input
@@ -68,13 +78,26 @@ function ToDoList() {
               value: /[a-zA-Z0-9._%+-@]+naver.com/,
               message: "Email please",
             },
-            minLength: 11,
+            minLength: {
+              value: 11,
+              message: "Please write your email address",
+            },
           })}
           placeholder="Write here your Email!!"
         />
-        <span>{errors.email?.message}</span>
+        <span>{errors?.email?.message}</span>
         <input
-          {...register("firstName", { required: "firstName please" })}
+          {...register("firstName", {
+            required: "firstName please",
+            // validate: (value) =>
+            //   value.includes("hojn") ? "hojn is not allowed" : true,
+            validate: {
+              noHojn: (value) =>
+                value.includes("hojn") ? "hojn is not allowed" : true,
+              noLee: (value) =>
+                value.includes("Lee") ? "no Lee allowed" : true,
+            },
+          })}
           placeholder="First Name"
         />
         <span>{errors?.firstName?.message}</span>
@@ -113,6 +136,8 @@ function ToDoList() {
         <span>{errors?.passWord1?.message}</span>
 
         <button>Add</button>
+        {/* ?를 붙히면 , errors 가 undefined 면 extraError을 찾지 않는다. == ?를 붙힌 항목이 undefined 면 그 뒤를 실행 하지 않는다 */}
+        <span>{errors?.extraError?.message}</span>
       </form>
     </div>
   );
