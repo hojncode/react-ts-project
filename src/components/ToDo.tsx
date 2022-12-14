@@ -1,6 +1,6 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
-import { IToDo, toDoState } from "../atoms";
+import { Categories, IToDo, toDoState } from "../atoms";
 
 // [
 //   {
@@ -55,18 +55,18 @@ function ToDo({ text, category, id }: IToDo) {
   return (
     <li>
       <span>{text}</span>
-      {category !== "DOING" && (
+      {category !== Categories.DOING && (
         // onClick={() => onClick("TO_DO") 이벤트리스너에 인자를 받고 싶을때 사용하는 형식. 참고할것,
         <button name="DOING" onClick={onClick}>
           Doing
         </button>
       )}
-      {category !== "TO_DO" && (
+      {category !== Categories.TO_DO && (
         <button name="TO_DO" onClick={onClick}>
           To Do
         </button>
       )}
-      {category !== "DONE" && (
+      {category !== Categories.DONE && (
         <button name="DONE" onClick={onClick}>
           Done
         </button>
