@@ -17,7 +17,6 @@ function CreateToDo() {
     ]);
     setValue("toDo", "");
   };
-  console.log(setValue.name);
   return (
     <form onSubmit={handleSubmit(handleValid)}>
       <input
